@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_application_1/component/widget_TextfieldCalc.dart';
+import 'package:flutter_application_1/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/component/button.dart';
-import 'package:flutter_application_1/component/widget_Textfield.dart';
 import 'package:flutter_application_1/controllers/calculator_contoller.dart';
 
 class CalculatorPage extends StatelessWidget {
@@ -18,14 +20,20 @@ class CalculatorPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          MyTextfield(
+          MyTfCalc(
             controller1: calculatorContoller.txtAngka1,
             label: 'Angka 1',
             hint: 'Input angka pertama',
             isPassword: false,
+            keyboardType: TextInputType.number,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           ),
-          MyTextfield(
+          MyTfCalc(
             controller1: calculatorContoller.txtAngka2,
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly,
+            ],
             label: 'Angka 1',
             hint: 'Input angka pertama',
             isPassword: false,
@@ -42,7 +50,13 @@ class CalculatorPage extends StatelessWidget {
                     calculatorContoller.tambah();
                   },
                 ),
-                MyButton(text: "-", textColor: Colors.blue, onPressed: () {}),
+                MyButton(
+                  text: "-",
+                  textColor: Colors.blue,
+                  onPressed: () {
+                    calculatorContoller.kurang();
+                  },
+                ),
               ],
             ),
           ),
@@ -50,15 +64,36 @@ class CalculatorPage extends StatelessWidget {
             margin: EdgeInsets.all(10),
             child: Row(
               children: [
-                MyButton(text: "X", textColor: Colors.blue, onPressed: () {}),
-                MyButton(text: "/", textColor: Colors.blue, onPressed: () {}),
+                MyButton(
+                  text: "X",
+                  textColor: Colors.blue,
+                  onPressed: () {
+                    calculatorContoller.kali();
+                  },
+                ),
+                MyButton(
+                  text: "/",
+                  textColor: Colors.blue,
+                  onPressed: () {
+                    calculatorContoller.bagi();
+                  },
+                ),
               ],
             ),
           ),
           Obx(() {
             return Text("Hasil " + calculatorContoller.hasil.value);
           }),
-          MyButton(text: 'clear', textColor: Colors.green, onPressed: () {}),
+          MyButton(
+            text: 'Move to football frfr no cap',
+            textColor: Colors.green,
+            onPressed: () {
+              Get.toNamed(AppRoutes.footballplayers);
+              // calculatorContoller.txtAngka1.text = "";
+              // calculatorContoller.txtAngka2.text = "";
+              // calculatorContoller.hasil.value = "";
+            },
+          ),
         ],
       ),
     );
