@@ -24,7 +24,7 @@ class MyEditingTextField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.horizontal(),
           borderSide: BorderSide(
-            color: const Color.fromARGB(255, 136, 129, 199)!,
+            color: const Color.fromARGB(255, 136, 129, 199),
           ),
         ),
         enabledBorder: OutlineInputBorder(

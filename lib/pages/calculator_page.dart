@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/component/widget_TextfieldCalc.dart';
-import 'package:flutter_application_1/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/component/button.dart';
 import 'package:flutter_application_1/controllers/calculator_contoller.dart';
@@ -85,13 +84,12 @@ class CalculatorPage extends StatelessWidget {
             return Text("Hasil " + calculatorContoller.hasil.value);
           }),
           MyButton(
-            text: 'Move to football frfr no cap',
+            text: 'Clear All',
             textColor: Colors.green,
             onPressed: () {
-              Get.toNamed(AppRoutes.footballplayers);
-              // calculatorContoller.txtAngka1.text = "";
-              // calculatorContoller.txtAngka2.text = "";
-              // calculatorContoller.hasil.value = "";
+              calculatorContoller.txtAngka1.text = "";
+              calculatorContoller.txtAngka2.text = "";
+              calculatorContoller.hasil.value = "";
             },
           ),
         ],
