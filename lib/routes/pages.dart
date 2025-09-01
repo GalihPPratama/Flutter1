@@ -1,3 +1,5 @@
+import 'package:flutter_application_1/navbar/both.dart';
+import 'package:flutter_application_1/navbar/homepage.dart';
 import 'package:flutter_application_1/navbar/mainpage.dart';
 import 'package:flutter_application_1/pages/calculator_page.dart';
 import 'package:flutter_application_1/pages/football_edit_page.dart';
@@ -9,7 +11,12 @@ class AppPages {
   static final pages = [
     GetPage(name: AppRoutes.calc, page: () => CalculatorPage()),
     GetPage(name: AppRoutes.footballplayers, page: () => FootballPage()),
-    GetPage(name: AppRoutes.footballeditplayers, page: () => FootballEditPage()),
+    GetPage(
+      name: AppRoutes.footballeditplayers,
+      page: () => FootballEditPage(),
+    ),
     GetPage(name: AppRoutes.main, page: () => MainPage()),
+    GetPage(name: AppRoutes.home, page: () => HoumPage()),
+    GetPage(name: AppRoutes.both, page: () => BothPage()),
   ];
 }
