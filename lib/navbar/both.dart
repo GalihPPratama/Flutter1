@@ -62,6 +62,14 @@ class BothPage extends StatelessWidget {
                 ),
               ),
               ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Houm'),
+                onTap: () {
+                  navController.changeTab(0);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.calculate),
                 title: Text('Calc'),
                 onTap: () {

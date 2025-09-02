@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bindings/footballedit_binding.dart';
 import 'package:flutter_application_1/component/widget_EditButton.dart';
 import 'package:flutter_application_1/component/widget_EditTextFIeld.dart';
 import 'package:flutter_application_1/controllers/football_controller.dart';
@@ -7,12 +8,11 @@ import 'package:get/get.dart';
 
 class FootballEditPage extends StatelessWidget {
   FootballEditPage({super.key});
-  final FootballController footballController = Get.put(FootballController());
+  // final FootballController footballController = Get.put(FootballController());
+  final editController = Get.find<FootballEditController>();
 
   @override
   Widget build(BuildContext context) {
-    final editController = Get.put(FootballEditController());
-
     final nameController = TextEditingController(
       text: editController.player.value?.name,
     );

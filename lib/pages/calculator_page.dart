@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/component/widget_TextfieldCalc.dart';
+import 'package:flutter_application_1/controllers/calculator_contoller.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/component/button.dart';
 import 'package:flutter_application_1/controllers/calculator_contoller.dart';
@@ -8,9 +9,11 @@ import 'package:flutter_application_1/controllers/calculator_contoller.dart';
 class CalculatorPage extends StatelessWidget {
   CalculatorPage({super.key});
 
-  final CalculatorContoller calculatorContoller = Get.put(
-    CalculatorContoller(),
-  );
+  // final CalculatorContoller calculatorContoller = Get.put(
+  //   CalculatorContoller(),
+  // );
+
+  final calculatorContoller = Get.find<CalculatorContoller>();
 
   @override
   Widget build(BuildContext context) {
