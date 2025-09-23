@@ -1,13 +1,19 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/bindings/calculator_binding.dart';
+import 'package:flutter_application_1/bindings/football_add_binding.dart';
 import 'package:flutter_application_1/bindings/football_binding.dart';
 import 'package:flutter_application_1/bindings/footballedit_binding.dart';
+import 'package:flutter_application_1/bindings/login_binding.dart';
+import 'package:flutter_application_1/bindings/menu_binding.dart';
+import 'package:flutter_application_1/bindings/splashscreen_binding.dart';
 import 'package:flutter_application_1/navbar/both.dart';
 import 'package:flutter_application_1/navbar/homepage.dart';
 import 'package:flutter_application_1/navbar/mainpage.dart';
 import 'package:flutter_application_1/pages/calculator_page.dart';
 import 'package:flutter_application_1/pages/football_edit_page.dart';
 import 'package:flutter_application_1/pages/football_page.dart';
+import 'package:flutter_application_1/pages/footballadd_page.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:flutter_application_1/pages/splashscreen_page.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:get/get.dart';
 
@@ -31,29 +37,32 @@ class AppPages {
     GetPage(
       name: AppRoutes.main,
       page: () => MainPage(),
-      binding: BindingsBuilder(() {
-        CalculatorBinding().dependencies();
-        FootballBinding().dependencies();
-        FootballeditBinding().dependencies();
-      }),
+      binding: MenuBinding(),
     ),
     GetPage(
       name: AppRoutes.home,
       page: () => HoumPage(),
-      binding: BindingsBuilder(() {
-        CalculatorBinding().dependencies();
-        FootballBinding().dependencies();
-        FootballeditBinding().dependencies();
-      }),
+      binding: MenuBinding(),
     ),
     GetPage(
       name: AppRoutes.both,
       page: () => BothPage(),
-      binding: BindingsBuilder(() {
-        CalculatorBinding().dependencies();
-        FootballBinding().dependencies();
-        FootballeditBinding().dependencies();
-      }),
+      binding: MenuBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.footballadd,
+      page: () => FootballaddPage(),
+      binding: FootballAddBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.splashscreen,
+      page: () => SplashscreenPage(),
+      binding: SplashscreenBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
     ),
   ];
 }

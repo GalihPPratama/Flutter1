@@ -6,4 +6,7 @@ class AppRoutes {
   static const String main = "/mainpage";
   static const String home = "/homepage";
   static const String both = "/both";
+  static const String footballadd = "/footballadd";
+  static const String splashscreen = "/splashscreen";
+  static const String login = "/loginpage";
 }

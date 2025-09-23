@@ -6,10 +6,8 @@ import 'package:get/get.dart';
 class FootballPage extends StatelessWidget {
   FootballPage({super.key});
 
-
   // final FootballController footballController = Get.put(FootballController());
-   final footballController = Get.find<FootballController>();
-
+  final footballController = Get.find<FootballController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +21,7 @@ class FootballPage extends StatelessWidget {
             itemBuilder: (context, index) {
               final player = footballController.Teamlist[index];
               return ListTile(
-
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(player.img),
-                ),
+                leading: CircleAvatar(backgroundImage: AssetImage(player.img)),
                 onTap: () {
                   Get.snackbar(
                     'Item Clicked',
@@ -46,6 +41,12 @@ class FootballPage extends StatelessWidget {
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed(AppRoutes.footballadd);
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

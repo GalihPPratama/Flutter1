@@ -4,7 +4,6 @@ import 'package:flutter_application_1/component/widget_TextfieldCalc.dart';
 import 'package:flutter_application_1/controllers/calculator_contoller.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/component/button.dart';
-import 'package:flutter_application_1/controllers/calculator_contoller.dart';
 
 class CalculatorPage extends StatelessWidget {
   CalculatorPage({super.key});

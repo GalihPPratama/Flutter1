@@ -2,9 +2,19 @@ import 'package:flutter_application_1/models/football_objects.dart';
 import 'package:get/get.dart';
 
 class FootballController extends GetxController {
-  var Teamlist = [
-    Players(name: "Max Verstappen", position: "RBR", number: "1", img: 'assets/livereactionadmin.png'),
-    Players(name: "Special Week", position: "Spica", number: "33", img: 'assets/livereactionadmin.png'),
+  var Teamlist = <Players>[
+    Players(
+      name: "Max Verstappen",
+      position: "RBR",
+      number: "1",
+      img: 'assets/livereactionadmin.png',
+    ),
+    Players(
+      name: "Special Week",
+      position: "Spica",
+      number: "33",
+      img: 'assets/livereactionadmin.png',
+    ),
     Players(
       name: "Player A",
       position: "Player A Position",
@@ -36,6 +46,10 @@ class FootballController extends GetxController {
       img: 'assets/livereactionadmin.png',
     ),
   ].obs;
+
+  void addPlayer(Players player) {
+    Teamlist.add(player);
+  }
 
   void updatePlayer(int index, Players updatedPlayer) {
     Teamlist[index] = updatedPlayer;
