@@ -9,4 +9,7 @@ class AppRoutes {
   static const String footballadd = "/footballadd";
   static const String splashscreen = "/splashscreen";
   static const String login = "/loginpage";
+  static const String contact = "/contact";
+  static const String example = "/example";
+  static const String loginapi = "/loginapi";
 }

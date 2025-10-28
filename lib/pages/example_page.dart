@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/example_controller.dart';
-import 'package:flutter_application_1/controllers/football_controller.dart';
-import 'package:flutter_application_1/pages/Mobile/footballscreen_mobile_page.dart';
-import 'package:flutter_application_1/pages/Widescreen/football_widescreen_page.dart';
+import 'package:flutter_application_1/pages/Mobile/exmp_mobile.dart';
+import 'package:flutter_application_1/pages/Widescreen/exmp_widescreen.dart';
 import 'package:get/get.dart';
 
-class FootballPage extends StatelessWidget {
-  FootballPage({super.key});
-  final footballController = Get.find<FootballController>();
+class ExamplePage extends StatelessWidget {
+  ExamplePage({super.key});
+
   final controller = Get.find<ExampleController>();
 
   @override
@@ -19,8 +18,8 @@ class FootballPage extends StatelessWidget {
           controller.updateLayout(constraints);
           return Obx(
             () => controller.isMobile.value
-                ? FootballMobile()
-                : FootballWidescreenPage(),
+                ? ExampleMobile()
+                :  ExampleWidescreen(),
           );
         },
       ),

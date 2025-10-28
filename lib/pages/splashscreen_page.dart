@@ -12,7 +12,7 @@ class SplashscreenPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Image.asset('assets/ntr.png', width: 400, height: 400),
+          child: Image.asset('assets/oguwi.gif', width: 400, height: 400),
         ),
       ),
     );

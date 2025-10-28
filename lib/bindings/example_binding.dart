@@ -1,12 +1,9 @@
 import 'package:flutter_application_1/controllers/example_controller.dart';
-import 'package:flutter_application_1/controllers/football_controller.dart';
 import 'package:get/get.dart';
 
-class FootballBinding extends Bindings {
+class ExampleBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<FootballController>(() => FootballController());
     Get.lazyPut<ExampleController>(() => ExampleController());
-    //only call when needed
   }
 }

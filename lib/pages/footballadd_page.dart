@@ -4,7 +4,6 @@ import 'package:flutter_application_1/component/widget_EditTextFIeld.dart';
 import 'package:flutter_application_1/controllers/football_controller.dart';
 import 'package:flutter_application_1/models/football_objects.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class FootballaddPage extends StatelessWidget {
   FootballaddPage({super.key});

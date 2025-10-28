@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/component/widget_TextfieldCalc.dart';
 import 'package:flutter_application_1/controllers/calculator_contoller.dart';
+import 'package:flutter_application_1/controllers/login_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/component/button.dart';
 
@@ -13,6 +14,7 @@ class CalculatorPage extends StatelessWidget {
   // );
 
   final calculatorContoller = Get.find<CalculatorContoller>();
+  final controller = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -83,15 +85,13 @@ class CalculatorPage extends StatelessWidget {
             ),
           ),
           Obx(() {
-            return Text("Hasil " + calculatorContoller.hasil.value);
+            return Text("Hasil ${calculatorContoller.hasil.value}");
           }),
           MyButton(
             text: 'Clear All',
             textColor: Colors.green,
             onPressed: () {
-              calculatorContoller.txtAngka1.text = "";
-              calculatorContoller.txtAngka2.text = "";
-              calculatorContoller.hasil.value = "";
+              controller.logout();
             },
           ),
         ],

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/component/button.dart';
+import 'package:flutter_application_1/controllers/login_api_controller.dart';
+import 'package:get/get.dart';
 
 class MyProfile extends StatelessWidget {
-  const MyProfile({super.key});
+  MyProfile({super.key});
+
+  final controllerrrr = Get.find<LoginApiController>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +42,13 @@ class MyProfile extends StatelessWidget {
               "galihpriadiwangsa2.0@gmail.com",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 15),
+            ),
+            MyButton(
+              text: 'logot',
+              textColor: Colors.teal,
+              onPressed: () {
+                controllerrrr.logout();
+              },
             ),
           ],
         ),
