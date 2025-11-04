@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/notification_controller.dart';
 import 'package:flutter_application_1/controllers/nav_controller.dart';
 import 'package:flutter_application_1/fragment/hom_fragment.dart';
-import 'package:flutter_application_1/pages/calculator_page.dart';
 import 'package:flutter_application_1/pages/contact_page.dart';
 import 'package:flutter_application_1/pages/footballApi_page.dart';
 import 'package:flutter_application_1/pages/profile_page.dart';
@@ -19,7 +18,7 @@ class BothPage extends StatelessWidget {
     HomeFragment(),
     UmaPage(),
     FootballapiPage(),
-    MyProfile(),
+    ProfilePage(),
     ContactPage(),
   ];
 

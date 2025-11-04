@@ -18,6 +18,7 @@ import 'package:flutter_application_1/pages/football_page.dart';
 import 'package:flutter_application_1/pages/footballadd_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/pages/login_api_page.dart';
+import 'package:flutter_application_1/pages/profile_page.dart';
 import 'package:flutter_application_1/pages/splashscreen_page.dart';
 import 'package:flutter_application_1/pages/uma_page.dart';
 import 'package:flutter_application_1/routes/routes.dart';
@@ -93,6 +94,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.umauma,
       page: () => UmaPage(),
+      binding: MenuBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.profile,
+      page: () => ProfilePage(),
       binding: MenuBinding(),
     ),
   ];

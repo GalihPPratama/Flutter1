@@ -14,4 +14,5 @@ class AppRoutes {
   static const String loginapi = "/loginapi";
   static const String footballapitable = "/footballapitable";
   static const String umauma = "/umauma";
+  static const String profile = "/profile";
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/controllers/auts_controller.dart';
 import 'package:flutter_application_1/controllers/login_api_controller.dart';
 import 'package:get/get.dart';
 

@@ -3,8 +3,8 @@ import 'package:flutter_application_1/component/button.dart';
 import 'package:flutter_application_1/controllers/login_api_controller.dart';
 import 'package:get/get.dart';
 
-class MyProfile extends StatelessWidget {
-  MyProfile({super.key});
+class ProfilePage extends StatelessWidget {
+  ProfilePage({super.key});
 
   final controllerrrr = Get.find<LoginApiController>();
 
@@ -19,30 +19,24 @@ class MyProfile extends StatelessWidget {
 
           children: [
             Center(
-              child: Image.asset(
-                'assets/profile.png', // or use Image.network for a network image
-                width: 150,
-                height: 150,
+              child: CircleAvatar(
+                radius: 70,
+                backgroundImage: controllerrrr.googlePhoto.value.isEmpty
+                    ? AssetImage('assets/google.png')
+                    : NetworkImage(controllerrrr.googlePhoto.value)
+                          as ImageProvider,
               ),
             ),
 
             const SizedBox(height: 10),
 
-            Text(
-              "Galih Priadiwangsa Pratama(14)",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 30),
-            ),
+            Text(controllerrrr.googleName.value),
             Text(
               "11 PPLG 1",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 15),
             ),
-            Text(
-              "galihpriadiwangsa2.0@gmail.com",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 15),
-            ),
+            Text(controllerrrr.googleEmail.value),
             MyButton(
               text: 'logot',
               textColor: Colors.teal,

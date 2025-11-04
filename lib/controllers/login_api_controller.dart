@@ -1,16 +1,31 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_application_1/models/Clientnetwork.dart';
 import 'package:flutter_application_1/models/LoginModel.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginApiController extends GetxController {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final RxBool isLoading = false.obs;
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  Future<void> loginApi() async {
+  var isLoading = false.obs;
+
+  // ✅ DATA GOOGLE UNTUK PROFILE PAGE
+  var googleName = "".obs;
+  var googleEmail = "".obs;
+  var googlePhoto = "".obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadGoogleData();
+  }
+
+  // 🔹 LOGIN FUNCTION
+  Future<void> loginapi() async {
     final username = usernameController.text.trim();
     final password = passwordController.text.trim();
 
@@ -23,9 +38,10 @@ class LoginApiController extends GetxController {
       return;
     }
 
-    isLoading.value = true;
     try {
-      final response = await ClientNetwork.postData('login', {
+      isLoading.value = true; // start loading
+
+      final response = await ClientNetwork.postData("login", {
         'username': username,
         'password': password,
       });
@@ -36,20 +52,18 @@ class LoginApiController extends GetxController {
       if (response.statusCode == 200 && response.body.isNotEmpty) {
         final data = loginModelFromJson(response.body);
 
-        if (data.status == true) {
+        if (data.status == true && data.token.isNotEmpty) {
+          // ✅ Login success → simpan token & username ke SharedPreferences
           final prefs = await SharedPreferences.getInstance();
-          await prefs.setString('auth_token', data.token);
-          await prefs.setString('username', username);
+          await prefs.setString("username", username);
+          await prefs.setString("token", data.token);
 
           Get.snackbar(
             'Success',
             data.message,
             snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.green.withOpacity(0.1),
           );
-          Get.toNamed(
-            AppRoutes.both,
-          ); // or AppRoutes.both / AppRoutes.home — use your main route
+          Get.offNamed(AppRoutes.both);
         } else {
           Get.snackbar(
             'Login failed',
@@ -64,33 +78,95 @@ class LoginApiController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
         );
       }
-    } catch (e, st) {
-      debugPrint('login error: $e\n$st');
+    } catch (e) {
+      debugPrint('login error: $e');
       Get.snackbar(
         'Error',
-        'Network or parsing error: $e',
+        'Username or password wrong',
         snackPosition: SnackPosition.BOTTOM,
       );
     } finally {
-      isLoading.value = false;
+      isLoading.value = true; // stop loading
     }
   }
 
   Future<void> logout() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('auth_token');
-    await prefs.remove('username');
-    // clear any other saved user data if needed
-    Get.offAllNamed(AppRoutes.loginapi); // navigate back to login screen
-    Get.snackbar(
-      'Logged out',
-      'You have been logged out',
-      snackPosition: SnackPosition.BOTTOM,
+    Get.defaultDialog(
+      title: "Konfirmasi",
+      middleText: "Apakah kamu yakin ingin Log out? :(",
+      textCancel: "NO",
+      textConfirm: "Yes",
+      confirmTextColor: Colors.white,
+      onConfirm: () async {
+        final prefs = await SharedPreferences.getInstance();
+
+        // ✅ Cek apakah login via Google
+        final isGoogleLogin = prefs.getBool("google_logged_in") ?? false;
+
+        if (isGoogleLogin) {
+          // ✅ Logout Google
+          await GoogleSignIn().signOut();
+          await FirebaseAuth.instance.signOut();
+        }
+
+        // ✅ Bersihkan semua data login
+        await prefs.clear();
+
+        // ✅ Kembali ke login
+        Get.offAllNamed(AppRoutes.loginapi);
+
+        Get.snackbar(
+          "Logout",
+          "Anda telah logout",
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      },
     );
   }
 
-  Future<bool> isLoggedIn() async {
+  // LOG IN WITH GOOGLE
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<void> loginWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) return;
+
+      final googleAuth = await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+        accessToken: googleAuth.accessToken,
+      );
+
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // ✅ Setelah login sukses
+      final prefs = await SharedPreferences.getInstance();
+
+      googleName.value = googleUser.displayName ?? "";
+      googleEmail.value = googleUser.email;
+      googlePhoto.value = googleUser.photoUrl ?? "";
+
+      await prefs.setString("google_name", googleName.value);
+      await prefs.setString("google_email", googleEmail.value);
+      await prefs.setString("google_photo", googlePhoto.value);
+      await prefs.setBool("google_logged_in", true);
+
+      Get.snackbar("Success", "Login Google sukses!");
+      Get.offAllNamed(AppRoutes.both);
+    } catch (e) {
+      print("Google Sign-In Error: $e");
+      Get.snackbar("Error", e.toString());
+    }
+  }
+
+  Future<void> loadGoogleData() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('auth_token') != null;
+
+    googleName.value = prefs.getString("google_name") ?? "";
+    googleEmail.value = prefs.getString("google_email") ?? "";
+    googlePhoto.value = prefs.getString("google_photo") ?? "";
   }
 }
