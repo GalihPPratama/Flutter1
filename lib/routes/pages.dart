@@ -12,12 +12,14 @@ import 'package:flutter_application_1/navbar/both.dart';
 import 'package:flutter_application_1/pages/calculator_page.dart';
 import 'package:flutter_application_1/pages/contact_page.dart';
 import 'package:flutter_application_1/pages/example_page.dart';
+import 'package:flutter_application_1/pages/footballApi_page.dart';
 import 'package:flutter_application_1/pages/football_edit_page.dart';
 import 'package:flutter_application_1/pages/football_page.dart';
 import 'package:flutter_application_1/pages/footballadd_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/pages/login_api_page.dart';
 import 'package:flutter_application_1/pages/splashscreen_page.dart';
+import 'package:flutter_application_1/pages/uma_page.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:get/get.dart';
 
@@ -82,6 +84,16 @@ class AppPages {
       name: AppRoutes.loginapi,
       page: () => LoginApiPage(),
       binding: LoginApiBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.footballapitable,
+      page: () => FootballapiPage(),
+      binding: MenuBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.umauma,
+      page: () => UmaPage(),
+      binding: MenuBinding(),
     ),
   ];
 }

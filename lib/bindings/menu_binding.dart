@@ -5,6 +5,7 @@ import 'package:flutter_application_1/controllers/football_controller.dart';
 import 'package:flutter_application_1/controllers/football_edit_controller.dart';
 import 'package:flutter_application_1/controllers/login_api_controller.dart';
 import 'package:flutter_application_1/controllers/login_controller.dart';
+import 'package:flutter_application_1/controllers/premieretable_controller.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 
@@ -18,6 +19,7 @@ class MenuBinding extends Bindings {
     Get.lazyPut<ContactController>(() => ContactController());
     Get.lazyPut<ExampleController>(() => ExampleController());
     Get.lazyPut<LoginApiController>(() => LoginApiController());
-    // TODO: implement dependencies
+    Get.lazyPut<PremieretableController>(() => PremieretableController());
+    //dump every dependent controller here unelss its a standalone page. everythign goes through menu anyways
   }
 }
