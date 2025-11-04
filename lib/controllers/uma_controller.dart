@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:flutter_application_1/models/TableModel.dart';
 import 'package:flutter_application_1/models/UmaModel.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -12,10 +10,10 @@ class UmaController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchPremiereTable();
+    fetchUmaTable();
   }
 
-  Future<void> fetchPremiereTable() async {
+  Future<void> fetchUmaTable() async {
     const url = "https://umapyoi.net/api/v1/character/list";
     try {
       //shit that may crash
@@ -25,11 +23,8 @@ class UmaController extends GetxController {
       print("json result" + response.body.toString());
 
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        final List Umadata = data[''];
-        Umas.assignAll(
-          Umadata.map((e) => UmaModel.fromJson(e)).toList(),
-        );
+        final List data = jsonDecode(response.body);
+        Umas.assignAll(data.map((e) => UmaModel.fromJson(e)).toList());
         //fill the variable named "standings" dari data model standingData(json)
       } else {
         Get.snackbar("failed", "failed loading data");

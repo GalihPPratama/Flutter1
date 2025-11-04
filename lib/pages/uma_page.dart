@@ -10,14 +10,14 @@ class UmaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("P R E MIERE LIGMA BALLS")),
+      appBar: AppBar(title: Text("UMAUMAUMAUMYA")),
       body: Obx(() {
         if (controller.isLoading.value) {
           return Center(child: CircularProgressIndicator());
         }
 
         return RefreshIndicator(
-          onRefresh: controller.fetchPremiereTable,
+          onRefresh: controller.fetchUmaTable,
           child: ListView.builder(
             itemCount: controller.Umas.length,
             itemBuilder: (context, index) {
@@ -28,7 +28,7 @@ class UmaPage extends StatelessWidget {
                     backgroundImage: NetworkImage(uma.thumbImg),
                   ),
                   title: Text(uma.nameEn),
-                  subtitle: Text(''),
+                  subtitle: Text('JP : ' + uma.nameJp),
                 ),
               );
             },
