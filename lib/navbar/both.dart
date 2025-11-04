@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controllers/notification_controller.dart';
 import 'package:flutter_application_1/controllers/nav_controller.dart';
 import 'package:flutter_application_1/fragment/hom_fragment.dart';
 import 'package:flutter_application_1/pages/calculator_page.dart';
@@ -11,6 +12,7 @@ class BothPage extends StatelessWidget {
   BothPage({super.key});
 
   final NavController navController = Get.put(NavController());
+  final NotificationController control = Get.put(NotificationController());
 
   final List<Widget> pages = [
     HomeFragment(),

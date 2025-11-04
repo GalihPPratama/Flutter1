@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/component/button.dart';
+import 'package:flutter_application_1/component/custombutton.dart';
 import 'package:flutter_application_1/component/widget_Textfield.dart';
 import 'package:flutter_application_1/controllers/login_api_controller.dart';
 import 'package:get/get.dart';
@@ -28,15 +28,18 @@ class LoginApiPage extends StatelessWidget {
               hint: "Pass your Word",
               isPassword: true,
             ),
-            //buttonchckerloadingingger
-            
 
-            MyButton(
-              text: "Login",
-              textColor: Colors.blueAccent,
-              onPressed: () {
-                controllerrrr.loginApi();
-              },
+            //buttonchckerloaderingger
+            Obx(
+              () => SizedBox(
+                width: 59,
+                child: CustomButton(
+                  text: controllerrrr.isLoading.value ? "loading" : "Login",
+                  textcolor: Colors.white,
+                  isLoading: controllerrrr.isLoading.value,
+                  onPressed: controllerrrr.loginApi,
+                ),
+              ),
             ),
           ],
         ),
