@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/component/custombutton.dart';
 import 'package:flutter_application_1/component/widget_Textfield.dart';
-import 'package:flutter_application_1/controllers/auts_controller.dart';
 import 'package:flutter_application_1/controllers/login_api_controller.dart';
 import 'package:get/get.dart';
 
