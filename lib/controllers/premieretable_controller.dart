@@ -21,8 +21,8 @@ class PremieretableController extends GetxController {
       //shit that may crash
       isLoading.value = true;
       final response = await http.get(Uri.parse(url));
-      print("status code" + response.statusCode.toString());
-      print("json result" + response.body.toString());
+      print("status code${response.statusCode}");
+      print("json result${response.body}");
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);

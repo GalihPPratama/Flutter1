@@ -31,12 +31,7 @@ class FootballapiPage extends StatelessWidget {
                   trailing: Text(team.intPoints),
                   title: Text(team.strTeam),
                   subtitle: Text(
-                    "Played " +
-                        team.intPlayed +
-                        " L : " +
-                        team.intLoss +
-                        " Draws " +
-                        team.intDraw,
+                    "Played ${team.intPlayed} L : ${team.intLoss} Draws ${team.intDraw}",
                   ),
                 ),
               );

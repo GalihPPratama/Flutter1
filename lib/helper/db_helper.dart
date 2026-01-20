@@ -35,7 +35,7 @@ class DBHelper {
   }
 
   Future<void> deleteName(String name) async {
-    final client = await this.db;
+    final client = await db;
     await client.delete('contacts', where: 'name = ?', whereArgs: [name]);
   }
 

@@ -8,7 +8,9 @@ import 'package:flutter_application_1/bindings/login_api_binding.dart';
 import 'package:flutter_application_1/bindings/login_binding.dart';
 import 'package:flutter_application_1/bindings/menu_binding.dart';
 import 'package:flutter_application_1/bindings/splashscreen_binding.dart';
+import 'package:flutter_application_1/bindings/student_binding.dart';
 import 'package:flutter_application_1/navbar/both.dart';
+import 'package:flutter_application_1/pages/student_page.dart';
 import 'package:flutter_application_1/pages/calculator_page.dart';
 import 'package:flutter_application_1/pages/contact_page.dart';
 import 'package:flutter_application_1/pages/example_page.dart';
@@ -100,6 +102,11 @@ class AppPages {
       name: AppRoutes.profile,
       page: () => ProfilePage(),
       binding: MenuBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.student,
+      page: () => StudentPage(),
+      binding: StudentBinding(),
     ),
   ];
 }

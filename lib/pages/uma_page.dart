@@ -28,7 +28,7 @@ class UmaPage extends StatelessWidget {
                     backgroundImage: NetworkImage(uma.thumbImg),
                   ),
                   title: Text(uma.nameEn),
-                  subtitle: Text('JP : ' + uma.nameJp),
+                  subtitle: Text('JP : ${uma.nameJp}'),
                 ),
               );
             },
