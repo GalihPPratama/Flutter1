@@ -16,7 +16,7 @@ class SplashscreenController extends GetxController {
     if (savedUsername != null) {
       Get.offAllNamed(AppRoutes.both);
     } else {
-      Get.offAllNamed(AppRoutes.loginapi);
+      Get.offAllNamed(AppRoutes.both);
     }
   }
 }
